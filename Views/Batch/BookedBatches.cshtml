@@ -1,0 +1,32 @@
+@model List<Batch>
+
+<h2>Booked Batches</h2>
+
+@if (Model.Any())
+{
+    <table class = "table">
+        <thead>
+            <tr>
+                <th>Start Time</th>
+                <th>End Time</th>
+                <th>Students</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var batch in Model)
+            {
+                <tr>
+                    <td>@batch.StartTime</td>
+                    <td>@batch.EndTime</td>
+                    <td>@(5 - batch.Capacity)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No batches have been booked.</p>
+}
+ <a asp-controller="Batch" asp-action="AvailableBatches" class="btn btn-primary">Back to available batches</a>
+

@@ -1,0 +1,43 @@
+
+<h1>French Tution Batches</h1>
+@if (Model != null && Model.Count > 0)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Start Time</th>
+                <th>End Time</th>
+                <th>Remaining Capacity</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var batch in Model)
+            {
+                <tr>
+                    <td>@batch.StartTime</td>
+                    <td>@batch.EndTime</td>
+                    <td>@batch.Capacity</td>
+                   
+                    <td>
+                        @if (batch.Capacity >= 1 )
+                        {
+                            <a asp-controller="Booking" asp-action="BatchEnrollmentForm" asp-route-id="@batch.BatchID" class="btn btn-primary">Book</a>
+
+                        }
+                        else
+                        {
+                            <span class="batch-full">Batch Full</span>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No available batches.</p>
+}
+
+<a asp-controller="Batch" asp-action="BookedBatches" class="btn btn-primary">Booked Batches</a>

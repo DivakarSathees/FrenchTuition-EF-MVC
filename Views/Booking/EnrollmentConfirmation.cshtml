@@ -1,0 +1,10 @@
+@model Student
+
+<h2>Enrollment Confirmation</h2>
+
+<p>You have successfully enrolled in the batch:</p>
+<p>Start Time: @Model.Batch.StartTime</p>
+<p>End Time: @Model.Batch.EndTime</p>
+
+<a asp-controller="Batch" asp-action="AvailableBatches" class="btn btn-primary">back to available batches</a>
+
